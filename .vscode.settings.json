@@ -1,0 +1,63 @@
+{
+  "workbench.colorTheme": "Night Owl",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.rename.enablePreview": false,
+  "editor.rulers": [
+  {},
+      80
+  ],
+  "workbench.editor.enablePreview": false,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "terminal.integrated.fontSize": 12,
+  "editor.fontSize": 11.5,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs":"active",
+  "security.workspace.trust.untrustedFiles": "open",
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "d:\\.vscode.vimrc",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["J"],
+        "commands": ["editor.action.moveLinesDownAction"]
+    }, // moveLineDown
+    {
+        "before": ["K"],
+        "commands": ["editor.action.moveLinesUpAction"]
+    } // moveLineUp
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+        "before": ["J"],
+        "commands": ["editor.action.moveLinesDownAction"]
+    }, // moveLineDown
+    {
+        "before": ["K"],
+        "commands": ["editor.action.moveLinesUpAction"]
+    } // moveLineUp
+  ],
+  "vim.handleKeys": {
+    "J": false,
+    "K": false
+  },
+  "editor.cursorSurroundingLines": 4,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.lineNumbers": "relative",
+  "explorer.confirmDelete": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "editor.minimap.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "color-highlight.markerType": "outline",
+  "diffEditor.wordWrap": "off",
+  "editor.wrappingIndent": "none",
+  "editor.accessibilitySupport": "off",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.stickyScroll.enabled": true
+}
