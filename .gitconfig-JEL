@@ -1,0 +1,4 @@
+[user]
+    email = "devtea@protonmail.com"
+[core]
+   sshCommand = "ssh -i ~/.ssh/devtea_gitlab"

@@ -1,11 +1,11 @@
 # set -x
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+#
 # lazy load nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$PATH:~/.npm/node_modules/.bin # Global modules
 export NVM_DIR=$HOME/.nvm
@@ -14,6 +14,16 @@ alias node='unalias node; nvm_load; node $@'
 alias npm=' unalias npm;  nvm_load; npm  $@'
 # [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
 
+# alias code='/mnt/c/Users/herman/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+
+# pnpm
+export PNPM_HOME="/home/devtea/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+alias pn=pnpm
+# pnpm end
+
+# docker integration alias
+alias run-integration-test="docker run --add-host=host.docker.internal:host-gateway --rm --ipc=host -p 44300:44300 -p 44301:44301 -e DISPLAY=host.docker.internal:0 -e PLAYWRIGHT_HEADLESS=true -e PLAYWRIGHT_DEVTOOLS=false bliblidotcom/playwright-runner:1.8.1-2"
 
 # support terminal color
 export TERM=xterm-256color
@@ -124,12 +134,23 @@ source $ZSH/oh-my-zsh.sh
 # =============================================================================
 # git alias
 alias git-author-commit="git shortlog -s -n -e --all"
+alias git-fo="git fetch origin | grep"
 # =============================================================================
 # tmux aliases
 
-# split-window -v -p 75 \; \
-# select-pane -t 1 \; \
-# send-keys 'weechat' C-m \;
+# alias tmux-foo="
+# tmux new-session \; \
 # split-window -v -p 15\; \
+# split-window -h -p 50\; \
+# select-pane -t 0 \; \
+#   send-keys 'cd ~/_repos/' C-m \; \
+# select-pane -t 1 \; \
+#   send-keys 'cd ~/_repos/' C-m \; \
+#   send-keys 'npm run dev' C-m \; \
+# select-pane -t 2 \; \
+#   send-keys 'cd ~/_repos/' C-m \; \
+#   send-keys 'npm run dev' C-m \; \
+# select-pane -t 0 \; \
+#"
 
 # set +x

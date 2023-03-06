@@ -1,5 +1,9 @@
+[includeIf "gitdir:_JEL/"]
+	path = .gitconfig-JEL
 [core]
-	autocrlf = true
+	autocrlf = input
+	whitespace = cr-at-eol
+	safecrlf = false
 [alias]
 	dog = log --decorate --oneline --graph
 	adog = log --all --decorate --oneline --graph
