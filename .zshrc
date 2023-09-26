@@ -134,7 +134,8 @@ source $ZSH/oh-my-zsh.sh
 # =============================================================================
 # git alias
 alias git-author-commit="git shortlog -s -n -e --all"
-alias git-fo="git fetch origin | grep"
+# alias puf="cat * | sort -u | uniq -c"
+alias puf="awk 1 ./* | sort -u | uniq -c"
 # =============================================================================
 # tmux aliases
 
