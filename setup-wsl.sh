@@ -4,10 +4,12 @@ sudo apt update
 sudo apt install tmux ranger git vim curl wget zsh
 
 # Install Nvm
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-nvm install 12
-nvm install 14
-nvm install 16
+# curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+# nvm install 12
+# nvm install 14
+# nvm install 16
+# nvm install 18
+# nvm install 20
 
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 

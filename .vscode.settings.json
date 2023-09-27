@@ -1,63 +1,81 @@
 {
-  "workbench.colorTheme": "Night Owl",
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.rename.enablePreview": false,
-  "editor.rulers": [
-  {},
-      80
-  ],
-  "workbench.editor.enablePreview": false,
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false,
-  "terminal.integrated.fontSize": 12,
-  "editor.fontSize": 11.5,
+  "color-highlight.markerType": "outline",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.wordWrap": "off",
+  "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs":"active",
-  "security.workspace.trust.untrustedFiles": "open",
-  "vim.vimrc.enable": true,
-  "vim.vimrc.path": "d:\\.vscode.vimrc",
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-        "before": ["J"],
-        "commands": ["editor.action.moveLinesDownAction"]
-    }, // moveLineDown
-    {
-        "before": ["K"],
-        "commands": ["editor.action.moveLinesUpAction"]
-    } // moveLineUp
-  ],
-  "vim.visualModeKeyBindings": [
-    {
-        "before": ["J"],
-        "commands": ["editor.action.moveLinesDownAction"]
-    }, // moveLineDown
-    {
-        "before": ["K"],
-        "commands": ["editor.action.moveLinesUpAction"]
-    } // moveLineUp
-  ],
-  "vim.handleKeys": {
-    "J": false,
-    "K": false
-  },
-  "editor.cursorSurroundingLines": 4,
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.lineNumbers": "relative",
+  "editor.cursorSurroundingLines": 4,
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Consolas, 'Courier New', monospace, 'Intel One Mono'",
+  "editor.fontSize": 11.5,
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.guides.bracketPairs": "active",
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "editor.rename.enablePreview": false,
+  "editor.rulers": [{}, 80],
+  "editor.stickyScroll.enabled": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wrappingIndent": "none",
   "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  // "files.associations": {
+  //   "*.css": "tailwindcss",
+  //   "*.scss": "tailwindcss"
+  // },
   "files.exclude": {
     "**/.classpath": true,
+    "**/.factorypath": true,
     "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
+    "**/.settings": true
   },
-  "editor.minimap.enabled": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "color-highlight.markerType": "outline",
-  "diffEditor.wordWrap": "off",
-  "editor.wrappingIndent": "none",
-  "editor.accessibilitySupport": "off",
+  "html.autoClosingTags": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "security.workspace.trust.untrustedFiles": "open",
+  "settingsSync.ignoredExtensions": ["ms-vscode-remote.remote-wsl-recommender"],
+  "terminal.external.windowsExec": "wt -p cmd",
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.env.windows": {},
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.useWslProfiles": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.stickyScroll.enabled": true
+  "update.enableWindowsBackgroundUpdates": false,
+  "update.mode": "none",
+  // "vim.handleKeys": {
+  //   "J": false,
+  //   "K": false
+  // },
+  // "vim.normalModeKeyBindingsNonRecursive": [{
+  //   "before": ["J"],
+  //   "commands": ["editor.action.moveLinesDownAction"]
+  // }, // moveLineDown
+  // {
+  //   "before": ["K"],
+  //   "commands": ["editor.action.moveLinesUpAction"] // moveLineUp
+  // }],
+  "vim.leader": " ",
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "d:\\.vscode.vimrc",
+  "window.zoomLevel": 1,
+  // "vim.visualModeKeyBindings": [{
+  //   "before": ["J"],
+  //   "commands": ["editor.action.moveLinesDownAction"]
+  // }, // moveLineDown
+  // {
+  //   "before": ["K"],
+  //   "commands": ["editor.action.moveLinesUpAction"] // moveLineUp
+  // }],
+  // "volar.completion.preferredTagNameCase": "pascal",
+  // "volar.inlayHints.eventArgumentInInlineHandlers": false,
+  // "volar.inlayHints.missingRequiredProps": false,
+  // "vscode-neovim.neovimExecutablePaths.win32": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+  // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.iconTheme": "material-icon-theme"
 }

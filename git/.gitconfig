@@ -9,12 +9,19 @@
 	adog = log --all --decorate --oneline --graph
 	cb = checkout -b
 	cp = cherry-pick
+	bsu = "!f() { git branch --set-upstream-to=origin/$1 $1; }; f"
+	fo = "!f() { git fetch origin $1:$1; }; f"
+[push]
+	default = current
+	autoSetupRemote = true
+[remote]
+	pushDefault = origin
+[init]
+	defaultBranch = master
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[push]
-	default = current
-[remote]
-	pushDefault = origin
+[http]
+	sslverify = false
