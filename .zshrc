@@ -12,18 +12,23 @@ export NVM_DIR=$HOME/.nvm
 nvm_load () { . $NVM_DIR/nvm.sh && . $NVM_DIR/bash_completion; }
 alias node='unalias node; nvm_load; node $@'
 alias npm=' unalias npm;  nvm_load; npm  $@'
+PATH="$HOME/.local/bin:$PATH"
 # [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
 
-# alias code='/mnt/c/Users/herman/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
-
 # pnpm
-export PNPM_HOME="/home/devtea/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-alias pn=pnpm
+export PNPM_HOME="/home/USER_HERE/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 
+# alias code='/mnt/c/Users/USER_HERE/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+
 # docker integration alias
-alias run-integration-test="docker run --add-host=host.docker.internal:host-gateway --rm --ipc=host -p 44300:44300 -p 44301:44301 -e DISPLAY=host.docker.internal:0 -e PLAYWRIGHT_HEADLESS=true -e PLAYWRIGHT_DEVTOOLS=false bliblidotcom/playwright-runner:1.8.1-2"
+# alias run-integration-test="docker run --add-host=host.docker.internal:host-gateway --rm --ipc=host -p 44300:44300 -p 44301:44301 -e DISPLAY=host.docker.internal:0 -e PLAYWRIGHT_HEADLESS=true -e PLAYWRIGHT_DEVTOOLS=false bliblidotcom/playwright-runner:1.8.1-2"
+#
+export NODE_OPTIONS=--max_old_space_size=4096
 
 # support terminal color
 export TERM=xterm-256color
@@ -33,7 +38,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/devtea/.oh-my-zsh"
+export ZSH="/home/USER_HERE/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -101,6 +106,7 @@ ZSH_THEME="candy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -136,22 +142,13 @@ source $ZSH/oh-my-zsh.sh
 alias git-author-commit="git shortlog -s -n -e --all"
 # alias puf="cat * | sort -u | uniq -c"
 alias puf="awk 1 ./* | sort -u | uniq -c"
+alias graphNode="while :; do grep -oP '^VmRSS:\s+\K\d+' /proc/$(ps aux | grep -v -E 'grep|sh' | grep node | awk '{print $2}')/status | numfmt --from-unit Ki --to-unit Mi; sleep 1; done | ttyplot -u Mi"
 # =============================================================================
 # tmux aliases
 
-# alias tmux-foo="
-# tmux new-session \; \
-# split-window -v -p 15\; \
-# split-window -h -p 50\; \
-# select-pane -t 0 \; \
-#   send-keys 'cd ~/_repos/' C-m \; \
-# select-pane -t 1 \; \
-#   send-keys 'cd ~/_repos/' C-m \; \
-#   send-keys 'npm run dev' C-m \; \
-# select-pane -t 2 \; \
-#   send-keys 'cd ~/_repos/' C-m \; \
-#   send-keys 'npm run dev' C-m \; \
-# select-pane -t 0 \; \
-#"
+vimSearch () {
+  grep -rn "$2" "$1" --exclude="*.map" | awk -F: '{print "+"$2" "$1}' | xargs -o vim
+}
 
 # set +x
+#
