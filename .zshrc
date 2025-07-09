@@ -1,3 +1,23 @@
+function preexec() {
+  timer=$(($(print -P %D{%s%6.})/1000))
+}
+
+function precmd() {
+  if [ $timer ]; then
+    now=$(($(print -P %D{%s%6.})/1000))
+    elapsed=$(($now - $timer))
+
+    if [ $elapsed -ge 5000 ]; then
+      display_time=$(($elapsed / 1000))"s"
+    else
+      display_time="${elapsed}ms"
+    fi
+
+    export RPROMPT="%F{cyan}${display_time} %{$reset_color%}"
+    unset timer
+  fi
+}
+
 # set -x
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -16,14 +36,14 @@ PATH="$HOME/.local/bin:$PATH"
 # [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
 
 # pnpm
-export PNPM_HOME="/home/USER_HERE/.local/share/pnpm"
+export PNPM_HOME="/home/herman/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-# alias code='/mnt/c/Users/USER_HERE/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
+# alias code='/mnt/c/Users/herman/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
 
 # docker integration alias
 # alias run-integration-test="docker run --add-host=host.docker.internal:host-gateway --rm --ipc=host -p 44300:44300 -p 44301:44301 -e DISPLAY=host.docker.internal:0 -e PLAYWRIGHT_HEADLESS=true -e PLAYWRIGHT_DEVTOOLS=false bliblidotcom/playwright-runner:1.8.1-2"
@@ -38,13 +58,15 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/USER_HERE/.oh-my-zsh"
+export ZSH="/home/herman/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="candy"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="jonathan"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -112,6 +134,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+#
+
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -142,7 +169,11 @@ source $ZSH/oh-my-zsh.sh
 alias git-author-commit="git shortlog -s -n -e --all"
 # alias puf="cat * | sort -u | uniq -c"
 alias puf="awk 1 ./* | sort -u | uniq -c"
-alias graphNode="while :; do grep -oP '^VmRSS:\s+\K\d+' /proc/$(ps aux | grep -v -E 'grep|sh' | grep node | awk '{print $2}')/status | numfmt --from-unit Ki --to-unit Mi; sleep 1; done | ttyplot -u Mi"
+
+function graphNode() {
+  while :; do grep -oP '^VmRSS:\s+\K\d+' /proc/$(ps aux | grep -v -E 'grep|sh' | grep "$1" | awk '{print $2}')/status | numfmt --from-unit Ki --to-unit Mi; sleep 1; done | ttyplot -u Mi
+}
+# alias graphNode="while :; do grep -oP '^VmRSS:\s+\K\d+' /proc/$(ps aux | grep -v -E 'grep|sh' | grep node | awk '{print $2}')/status | numfmt --from-unit Ki --to-unit Mi; sleep 1; done | ttyplot -u Mi"
 # =============================================================================
 # tmux aliases
 

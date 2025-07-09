@@ -3,39 +3,46 @@
 [includeIf "gitdir:~/_self/"]
         path = .gitconfig-self
 [includeIf "gitdir:~/_JEL/"]
-        path = .gitconfig-JEL
+	path = .gitconfig-JEL
+
 [core]
-        autocrlf = false
-        whitespace = cr-at-eol
-        safecrlf = true
-        filemode = false
+	autocrlf = false
+	whitespace = cr-at-eol
+	safecrlf = true
+	filemode = false
 [alias]
-        dog = log --decorate --oneline --graph
-        adog = log --all --decorate --oneline --graph
-        cb = checkout -b
-        cp = cherry-pick
-        bsu = "!f() { git branch --set-upstream-to=origin/$1 $1; }; f"
-        fo = "!f() { git fetch origin $1:$1; }; f"
-        po = "!f() { git push origin $1:$1; }; f"
-        pod = push origin -d
-        mg = merge -Xdiff-algorithm=patience
+	dog = log --decorate --oneline --graph
+	adog = log --all --decorate --oneline --graph
+	cb = checkout -b
+	cp = cherry-pick
+	bsu = "!f() { git branch --set-upstream-to=origin/$1 $1; }; f"
+	fo = "!f() { git fetch origin $1:$1; }; f"
+	po = "!f() { git push origin $1:$1; }; f"
+	pod = push origin -d
+	mg = merge -Xdiff-algorithm=patience
 [push]
-        default = current
-        autoSetupRemote = true
+	default = current
+	autoSetupRemote = true
 [remote]
-        pushDefault = origin
+	pushDefault = origin
 [init]
-        defaultBranch = master
+	defaultBranch = master
 [http]
-        sslverify = false
+	sslverify = false
+
 [safe]
-        directory = *
+	directory = *
+
 [pull]
-        rebase = false
+	rebase = false
+
 [diff]
-        algorithm = patience
+	algorithm = patience
+[credential]
+	helper = store
+
 [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

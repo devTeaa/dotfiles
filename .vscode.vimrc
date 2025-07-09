@@ -14,8 +14,10 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Mark current position and go to definition
-nnoremap gd mzgd
+nnoremap gd mzgdzz
+
+" Mark current position and go to top of files
+nnoremap gg mzgg
 
 " Go back to marked position
-nnoremap gb `z
-
+nnoremap gb `zzz
