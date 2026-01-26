@@ -22,25 +22,32 @@ function precmd() {
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
+# Windows
 # lazy load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH=$PATH:~/.npm/node_modules/.bin # Global modules
-export NVM_DIR=$HOME/.nvm
-nvm_load () { . $NVM_DIR/nvm.sh && . $NVM_DIR/bash_completion; }
-alias node='unalias node; nvm_load; node $@'
-alias npm=' unalias npm;  nvm_load; npm  $@'
-PATH="$HOME/.local/bin:$PATH"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
+# export PATH=$PATH:~/.npm/node_modules/.bin # Global modules
+# export NVM_DIR=$HOME/.nvm
+# nvm_load () { . $NVM_DIR/nvm.sh && . $NVM_DIR/bash_completion; }
+# alias node='unalias node; nvm_load; node $@'
+# alias npm=' unalias npm;  nvm_load; npm  $@'
+# PATH="$HOME/.local/bin:$PATH"
 # [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
+# =============================================================================
+#
+# Macbook
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# =============================================================================
 
 # pnpm
-export PNPM_HOME="/home/herman/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# export PNPM_HOME="/home/herman/.local/share/pnpm"
+# case ":$PATH:" in
+  # *":$PNPM_HOME:"*) ;;
+  # *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
 # pnpm end
 
 # alias code='/mnt/c/Users/herman/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code'
@@ -51,20 +58,22 @@ esac
 export NODE_OPTIONS=--max_old_space_size=4096
 
 # support terminal color
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 # set default text editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/herman/.oh-my-zsh"
+export ZSH="/Users/herman/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="candy"
+# ZSH_THEME="candy-af"
+ZSH_THEME="bira"
+# ZSH_THEME="candy"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="jonathan"
 
@@ -181,5 +190,23 @@ vimSearch () {
   grep -rn "$2" "$1" --exclude="*.map" | awk -F: '{print "+"$2" "$1}' | xargs -o vim
 }
 
+# ignore commands longer than 500 characters
+zshaddhistory() {
+  [[ ${#1} -lt 500 ]]
+}
+
+## openresty
+PATH=/usr/local/openresty/nginx/sbin:$PATH
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/herman/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 # set +x
 #
+
+# bun completions
+[ -s "/Users/herman/.bun/_bun" ] && source "/Users/herman/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
